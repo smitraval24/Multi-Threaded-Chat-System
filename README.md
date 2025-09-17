@@ -1,69 +1,66 @@
-# Group Chat Application in C
+# Multi-Threaded Chat System
 
-This is a **Group Chat Application** implemented in C, designed to facilitate real-time communication between multiple users over a network. The application consists of a **multi-threaded server** and **multiple clients**, allowing users to join a chat room, send messages, and receive messages from other users in real-time.
+A **real-time group chat application** built with C that enables seamless communication between multiple users across a network. The system features a **concurrent server architecture** and **client applications**, providing users the ability to participate in chat rooms, exchange messages, and communicate with others instantly.
 
----
+## Key Capabilities
 
-## Features
+- **Concurrent Server Design**: Manages multiple client connections at once through threading technology
+- **Instant Message Exchange**: Users can transmit and receive messages without delay
+- **Message Broadcasting**: Any message sent by a user is distributed to all active participants
+- **Clean Exit Functionality**: Users can leave the chat cleanly by entering `"exit"`
 
-- **Multi-Threaded Server**: Handles multiple client connections simultaneously using threads.
-- **Real-Time Messaging**: Clients can send and receive messages in real-time.
-- **Broadcast Messaging**: Messages sent by one client are broadcast to all other connected clients.
-- **Graceful Disconnection**: Clients can disconnect gracefully by typing `"exit"`.
+## System Architecture
 
----
+### Server Component
+- Accepts incoming client connections on a designated port
+- Spawns individual threads for each connected client to manage communication
+- Distributes messages from any client to all other active clients
 
-## How It Works
+### Client Component
+- Establishes connection to the server via IP address and port number
+- Transmits messages to the server for distribution to all participants
+- Receives messages from other participants instantly
 
-### Server
-- Listens for incoming client connections on a specified port.
-- Creates a new thread for each connected client to handle communication.
-- Broadcasts messages received from one client to all other connected clients.
+## Technical Stack
 
-### Client
-- Connects to the server using the server's IP address and port.
-- Sends messages to the server, which are broadcast to all clients.
-- Receives messages from other clients in real-time.
+- **Programming Language**: C
+- **Network Communication**: Socket Programming APIs
+- **Concurrency**: Multi-Threading Implementation
 
----
+## Setup Instructions
 
-## Technologies Used
+### System Requirements
+- C compiler (such as `gcc`)
+- POSIX-compatible operating system (Linux, macOS, etc.)
 
-- **C Programming Language**: Core implementation of the application.
-- **Socket Programming**: For network communication between the server and clients.
-- **Multi-Threading**: To handle multiple clients concurrently.
+### Installation & Execution
 
----
-
-## How to Run
-
-### Prerequisites
-- A C compiler (e.g., `gcc`).
-- POSIX-compliant operating system (e.g., Linux, macOS).
-
-- ### Steps
-
-1. **Clone the Repository**:
-   bash
+1. **Download the Repository**:
+   ```bash
    git clone https://github.com/smitraval24/Multi-Threaded-Chat-System.git
    cd group-chat-application-c
+   ```
 
-2. **Compile the Server**:
-    bash
-    ```gcc SocketServer.c -o server -lpthread```
+2. **Build the Server Component**:
+   ```bash
+   gcc SocketServer.c -o server -lpthread
+   ```
 
-3.  **Run the Server**:
-    bash
-    ```./server```
+3. **Start the Server**:
+   ```bash
+   ./server
+   ```
 
-4.  **Compile the Client**:
-    bash
-    ```gcc socketclient.c -o client -lpthread```
+4. **Build the Client Component**:
+   ```bash
+   gcc socketclient.c -o client -lpthread
+   ```
 
-5.  **Run the Client**:
-    bash
-    ```./client```
+5. **Launch a Client**:
+   ```bash
+   ./client
+   ```
 
-6.  **Connect Multiple Clients**:
-       Open multiple terminal windows and run the client program in each window.
-       Start chatting in real-time!
+6. **Add More Participants**:
+   Launch additional terminal sessions and execute the client program in each.
+   Begin your real-time conversation!
